@@ -39,19 +39,20 @@ class App:
         self.topic_button.grid(row=3, column=4, columnspan=1)
 
         self.subscription_list = Listbox(root)
-        self.subscription_list.grid(row=4, column=0, columnspan=5, sticky=W+E+N+S, padx=5, pady=5)
+        self.subscription_list.grid(row=4, column=0, columnspan=5, rowspan=2, sticky=W+E+N+S, padx=5, pady=5)
 
         self.unsubscribe_button = Button(root, text="Unsubscribe", state=DISABLED, command=self.unsubscribe)
-        self.unsubscribe_button.grid(row=5, column=0, columnspan=5)
+        self.unsubscribe_button.grid(row=6, column=0, columnspan=5)
 
         for i in range(5, 8):
             root.grid_columnconfigure(i, weight=1, uniform="messages")
+            root.grid_rowconfigure(i-1, weight=1, uniform="message_row")
 
         message_label = Label(root, text="Messages")
         message_label.grid(row=1, column=5, columnspan=3)
 
         self.message_list = Listbox(root)
-        self.message_list.grid(row=2, column=5, columnspan=3, rowspan=4, sticky=W+E+N+S, padx=5, pady=5)
+        self.message_list.grid(row=2, column=5, columnspan=3, rowspan=6, sticky=W+E+N+S, padx=5, pady=5)
 
         self.frame.mainloop()
 
